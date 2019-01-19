@@ -34,6 +34,14 @@ public class Invoker {
         return  methodNameList;
     }
 
+    public String invoke(int index, String arg1, String arg2){
+        return invocationItems.get(index).invoke(arg1,arg2);
+    }
+
+    public int getParamCountForItem(int index){
+        return invocationItems.get(index).getParameterCount();
+    }
+
     private void loadInvocationItems(File folder) {
         for (File f : folder.listFiles()) {
             try {
@@ -104,25 +112,25 @@ public class Invoker {
             IComparable comparable = (IComparable) c.getDeclaredConstructor().newInstance();
             if(null == comparable) throw new Exception();
             for(Method m:IComparable.class.getMethods()) {
-                invocationItems.add(new InvocationItem(m,c.toString().substring(6)));
+                invocationItems.add(new InvocationItem(c,m,c.toString().substring(6)));
             }
         } else if (ILetterCounter.class.isAssignableFrom(c)){
             ILetterCounter letterCounter = (ILetterCounter) c.getDeclaredConstructor().newInstance();
             if(null == letterCounter) throw new Exception();
             for(Method m:ILetterCounter.class.getMethods()) {
-                invocationItems.add(new InvocationItem(m,c.toString().substring(6)));
+                invocationItems.add(new InvocationItem(c,m,c.toString().substring(6)));
             }
         } else if (IMean.class.isAssignableFrom(c)){
             IMean mean = (IMean) c.getDeclaredConstructor().newInstance();
             if(null == mean) throw new Exception();
             for(Method m:IMean.class.getMethods()) {
-                invocationItems.add(new InvocationItem(m,c.toString().substring(6)));
+                invocationItems.add(new InvocationItem(c,m,c.toString().substring(6)));
             }
         } else if (IRandomGenerator.class.isAssignableFrom(c)){
             IRandomGenerator randomGenerator = (IRandomGenerator) c.getDeclaredConstructor().newInstance();
             if(null == randomGenerator) throw new Exception();
             for(Method m:IRandomGenerator.class.getMethods()) {
-                invocationItems.add(new InvocationItem(m,c.toString().substring(6)));
+                invocationItems.add(new InvocationItem(c,m,c.toString().substring(6)));
             }
         }
 

@@ -44,17 +44,32 @@ public class ViewController implements Initializable {
 
     private Invoker invoker;
 
-    private static int argCount = 2;
+    private int argCount;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadButton.setOnAction(this::chooseFile);
         evaluateButton.setOnAction(this::evaluate);
         evaluationField.setDisable(true);
+        argCount=0;
+        disableNotUsed();
     }
 
     private void evaluate(ActionEvent actionEvent){
         String arg1 = arg1Field.getText();
+        String arg2 = arg2Field.getText();
+
+        int index = methodListView.getSelectionModel().getSelectedIndex();
+
+        String result = null;
+        try {
+            result = invoker.invoke(index,arg1,arg2);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            if (result == null) evaluationField.setText("ERROR");
+            else evaluationField.setText(result);
+        }
 
     }
     private void chooseFile(ActionEvent actionEvent){
@@ -80,6 +95,7 @@ public class ViewController implements Initializable {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 arg1Field.clear();
                 arg2Field.clear();
+                argCount = invoker.getParamCountForItem(methodListView.getSelectionModel().getSelectedIndex());
                 disableNotUsed();
             }
         });
