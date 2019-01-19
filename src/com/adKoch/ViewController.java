@@ -50,9 +50,11 @@ public class ViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         loadButton.setOnAction(this::chooseFile);
         evaluateButton.setOnAction(this::evaluate);
+        evaluationField.setDisable(true);
     }
 
     private void evaluate(ActionEvent actionEvent){
+        String arg1 = arg1Field.getText();
 
     }
     private void chooseFile(ActionEvent actionEvent){
@@ -64,11 +66,11 @@ public class ViewController implements Initializable {
         if(null != f){
             invoker = null;
             invoker = new Invoker(f);
-            setupMethodListView();
+            setMethodListView();
         }
     }
 
-    private void setupMethodListView(){
+    private void setMethodListView(){
         ObservableList<String> items = FXCollections.observableArrayList(invoker.getMethodNames());
         methodListView.setItems(items);
         methodListView.getSelectionModel().clearSelection();

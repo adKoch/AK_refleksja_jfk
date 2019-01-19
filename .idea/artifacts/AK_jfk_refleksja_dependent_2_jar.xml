@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/AK_jfk_refleksja_dependent_2_jar</output-path>
     <root id="archive" name="AK_jfk_refleksja_dependent_2.jar">
       <element id="module-output" name="AK_jfk_refleksja_dependent_2" />
-      <element id="module-output" name="AK_refleksja_jfk" />
     </root>
   </artifact>
 </component>
