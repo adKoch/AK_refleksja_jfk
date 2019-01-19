@@ -39,6 +39,7 @@ public class Invoker {
     }
 
     public int getParamCountForItem(int index){
+        if(index<0 || null==invocationItems || null==invocationItems.get(index)) return 0;
         return invocationItems.get(index).getParameterCount();
     }
 
@@ -48,7 +49,6 @@ public class Invoker {
                 if (f.getName().endsWith(".jar")) loadFromJar(f);
                 else if(f.getName().endsWith(".class")) loadFromClass(f);
             } catch (Exception e) {
-                System.out.print(e);
             }
         }
 

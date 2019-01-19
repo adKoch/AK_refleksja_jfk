@@ -53,9 +53,16 @@ public class ViewController implements Initializable {
         evaluationField.setDisable(true);
         argCount=0;
         disableNotUsed();
+        evaluateButton.setDisable(true);
     }
 
     private void evaluate(ActionEvent actionEvent){
+
+        if((!arg1Field.isDisabled() && arg1Field.getText().isEmpty()) || (!arg2Field.isDisabled() && arg2Field.getText().isEmpty())){
+            evaluationField.setText("Empty fields");
+            return;
+        }
+
         String arg1 = arg1Field.getText();
         String arg2 = arg2Field.getText();
 
@@ -65,7 +72,6 @@ public class ViewController implements Initializable {
         try {
             result = invoker.invoke(index,arg1,arg2);
         } catch (Exception e) {
-            System.out.println(e);
         } finally {
             if (result == null) evaluationField.setText("ERROR");
             else evaluationField.setText(result);
@@ -82,6 +88,7 @@ public class ViewController implements Initializable {
             invoker = null;
             invoker = new Invoker(f);
             setMethodListView();
+            evaluateButton.setDisable(true);
         }
     }
 
@@ -95,8 +102,10 @@ public class ViewController implements Initializable {
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 arg1Field.clear();
                 arg2Field.clear();
+                evaluationField.clear();
                 argCount = invoker.getParamCountForItem(methodListView.getSelectionModel().getSelectedIndex());
                 disableNotUsed();
+                evaluateButton.setDisable(false);
             }
         });
     }
