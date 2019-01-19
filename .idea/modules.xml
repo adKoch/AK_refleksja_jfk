@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AK_jfk_refleksja_dependent_1/AK_jfk_refleksja_dependent_1.iml" filepath="$PROJECT_DIR$/AK_jfk_refleksja_dependent_1/AK_jfk_refleksja_dependent_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AK_jfk_refleksja_dependent_2/AK_jfk_refleksja_dependent_2.iml" filepath="$PROJECT_DIR$/AK_jfk_refleksja_dependent_2/AK_jfk_refleksja_dependent_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AK_refleksja_jfk.iml" filepath="$PROJECT_DIR$/AK_refleksja_jfk.iml" />
+    </modules>
+  </component>
+</project>
