@@ -58,9 +58,9 @@ public class InvocationItem {
                     if(types[0]!=params[0].getClass()) return "Type mismatch ";
 
                 } else if(types[0]==double.class && params[0].getClass() != Double.class){
-                    return "Type mismatch "+ params[0].getClass();
+                    return "Type mismatch ";
                 } else if(types[0]==int.class && params[0].getClass() != Integer.class){
-                    return "Type mismatch "+ params[0].getClass();
+                    return "Type mismatch ";
                 }
 
                 if(types.length==1) result = method.invoke(ofClass.getDeclaredConstructor().newInstance(),params[0]).toString();
@@ -82,9 +82,9 @@ public class InvocationItem {
                     if(types[1]!=params[1].getClass()) return "Type mismatch ";
 
                 } else if(types[1]==double.class && params[1].getClass() != Double.class){
-                    return "Type mismatch "+ params[1].getClass();
+                    return "Type mismatch ";
                 } else if(types[1]==int.class && params[1].getClass() != Integer.class){
-                    return "Type mismatch "+ params[1].getClass();
+                    return "Type mismatch ";
                 }
 
                 if(types.length==2) result = method.invoke(ofClass.getDeclaredConstructor().newInstance(),params).toString();
